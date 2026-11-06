@@ -1,0 +1,43 @@
+import react from '@vitejs/plugin-react';
+import { defineConfig, lazyPlugins } from 'vite-plus';
+
+// https://vite.dev/config/
+export default defineConfig({
+  staged: {
+    '*': 'vp check --fix',
+  },
+  fmt: {
+    printWidth: 85,
+    singleQuote: true,
+    semi: true,
+    bracketSpacing: true,
+    trailingComma: 'all',
+    sortImports: true,
+    sortPackageJson: true,
+    ignorePatterns: ['dist/**'],
+  },
+  lint: {
+    plugins: ['react', 'oxc'],
+    rules: {
+      'react/rules-of-hooks': 'error',
+      'react/only-export-components': [
+        'warn',
+        {
+          allowConstantExport: true,
+        },
+      ],
+      'vite-plus/prefer-vite-plus-imports': 'error',
+    },
+    options: {
+      typeAware: true,
+      typeCheck: true,
+    },
+    jsPlugins: [
+      {
+        name: 'vite-plus',
+        specifier: 'vite-plus/oxlint-plugin',
+      },
+    ],
+  },
+  plugins: lazyPlugins(() => [react()]),
+});
