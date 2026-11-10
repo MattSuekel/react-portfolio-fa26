@@ -1,6 +1,6 @@
 import { Link, NavLink } from 'react-router-dom';
 
-export default function Header() {
+function Header() {
   return (
     <header>
       <Link to="/">@mattsuekel</Link>
@@ -21,3 +21,5 @@ export default function Header() {
     </header>
   );
 }
+
+export default Header;

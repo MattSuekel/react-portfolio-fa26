@@ -1,0 +1,14 @@
+{
+  "projects": [
+    {
+      "id": "p1",
+      "title": "Photogaphy Portfolio",
+      "description": "A site made to share my photos",
+      "details": "I wanted a place to upload and share photos other than social media, where engagment measures success... la la lorem",
+      "year": "2024",
+      "type": "Personal"
+    }
+  ],
+  "messages": [],
+  "$schema": "./node_modules/json-server/schema.json"
+}
