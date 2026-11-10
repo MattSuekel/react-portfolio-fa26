@@ -1,1 +1,32 @@
 @import 'tailwindcss';
+
+@theme {
+  --font-serif: 'Source Serif 4', Georgia, serif;
+  --font-sans: 'Inter', sans-serif;
+
+  --color-background: #1b1b1b;
+  --color-surface: #242424;
+  --color-foreground: #eae8e5;
+  --color-muted: #a3a3a3;
+  --color-border: #383838;
+  --color-accent: #ffffff;
+  --spacing-picture: calc(100vh - 19rem);
+}
+
+@layer base {
+  html {
+    color-scheme: dark;
+  }
+
+  body {
+    @apply bg-background text-foreground font-serif antialiased;
+  }
+
+  a {
+    @apply transition-colors;
+  }
+
+  a:hover {
+    @apply text-accent;
+  }
+}

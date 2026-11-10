@@ -6,7 +6,19 @@
       "description": "A site made to share my photos",
       "details": "I wanted a place to upload and share photos other than social media, where engagment measures success... la la lorem",
       "year": "2024",
-      "type": "Personal"
+      "image": "/images/photo.png",
+      "type": "Personal",
+      "home": true
+    },
+    {
+      "id": "p2",
+      "title": "Wedding Site",
+      "description": "An informational site to share extra details about our wedding",
+      "details": "A fun site matching the feel of the wedding and invitations. We wanted our guest to have a good experience when it came to location, attire, gifts etc. lorem lorem al alkjlkjasdg",
+      "year": "2025",
+      "image": "/images/mattnfaithwedding.jpeg",
+      "type": "Personal",
+      "home": true
     }
   ],
   "messages": [],

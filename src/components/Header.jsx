@@ -1,21 +1,34 @@
 import { Link, NavLink } from 'react-router-dom';
 
 function Header() {
-  return (
-    <header>
-      <Link to="/">@mattsuekel</Link>
+  const navLinks = [
+    { to: '/', label: 'Home' },
+    { to: '/projects', label: 'Projects' },
+    { to: '/contact', label: 'Contact' },
+  ];
 
-      <nav>
-        <ul>
-          <li>
-            <NavLink to="/">Home</NavLink>
-          </li>
-          <li>
-            <NavLink to="/projects">Projects</NavLink>
-          </li>
-          <li>
-            <NavLink to="/contact">Contact</NavLink>
-          </li>
+  return (
+    <header className="mb-16 flex flex-wrap items-center justify-between gap-6">
+      <Link to="/" className="font-serif text-2xl font-semibold text-foreground">
+        Matthew Suekel
+      </Link>
+
+      <nav aria-label="Main navigation">
+        <ul className="flex flex-wrap items-center gap-6">
+          {navLinks.map(({ to, label }) => (
+            <li key={to}>
+              <NavLink
+                to={to}
+                className={({ isActive }) =>
+                  `font-sans text-sm transition-colors ${
+                    isActive ? 'text-foreground' : 'text-muted hover:text-foreground'
+                  }`
+                }
+              >
+                {label}
+              </NavLink>
+            </li>
+          ))}
         </ul>
       </nav>
     </header>
