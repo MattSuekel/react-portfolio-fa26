@@ -2,7 +2,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
 import ContactPage from './pages/ContactPage';
 import ErrorPage from './pages/ErrorPage';
-import HomePage from './pages/HomePage';
+import HomePage, { loader as homeProjectsLoader } from './pages/HomePage';
 import ProjectDetailPage from './pages/ProjectDetailPage';
 import ProjectsPage from './pages/ProjectsPage';
 import RootLayout from './pages/RootLayout';
@@ -13,7 +13,7 @@ const router = createBrowserRouter([
     element: <RootLayout />,
     errorElement: <ErrorPage />,
     children: [
-      { index: true, element: <HomePage /> },
+      { index: true, element: <HomePage />, loader: homeProjectsLoader },
       {
         path: 'projects',
         children: [

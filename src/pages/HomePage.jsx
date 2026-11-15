@@ -1,18 +1,10 @@
-import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLoaderData } from 'react-router-dom';
 
 import me from '../assets/mecrop.jpg';
 import ProjectCard from '../components/ProjectCard';
-import useHttp from '../hooks/useHttp';
 
 function HomePage() {
-  const [projects, setProjects] = useState([]);
-  const { isLoading, error, sendRequest } = useHttp();
-
-  useEffect(() => {
-    sendRequest('http://localhost:3000/projects', {}, setProjects);
-  }, [sendRequest]);
-
+  const projects = useLoaderData();
   const homeProjects = projects.filter((project) => project.home);
 
   return (
@@ -40,17 +32,11 @@ function HomePage() {
             </Link>
           </div>
 
-          {isLoading && <p role="status">Loading projects...</p>}
-
-          {error && <p role="alert">{error}</p>}
-
-          {!isLoading && !error && (
-            <div className="columns-1 gap-5 sm:columns-2">
-              {homeProjects.map((project) => (
-                <ProjectCard key={project.id} project={project} />
-              ))}
-            </div>
-          )}
+          <div className="columns-1 gap-5 sm:columns-2">
+            {homeProjects.map((project) => (
+              <ProjectCard key={project.id} project={project} />
+            ))}
+          </div>
         </section>
       </div>
 
@@ -68,3 +54,27 @@ function HomePage() {
 }
 
 export default HomePage;
+
+export async function loader() {
+  const response = await fetch(
+    'https://react-db-2fda0-default-rtdb.firebaseio.com/portfolio/projects.json',
+  );
+
+  if (!response.ok) {
+    throw new Response(JSON.stringify({ message: 'could not fetch projects' }), {
+      status: 500,
+    });
+  }
+
+  const responseData = await response.json();
+  const loadedProjects = [];
+
+  for (const key in responseData) {
+    loadedProjects.push({
+      id: key,
+      ...responseData[key],
+    });
+  }
+
+  return loadedProjects;
+}
