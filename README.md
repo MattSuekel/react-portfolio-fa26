@@ -3,6 +3,9 @@
 todo:
 
 - [] week 12 auth stuff
+- [x] make login/signup page
+- [x] adapt auth from weekly activity
+- [] add protected route
 
 - [] add contact page
 - [] finish short bio
