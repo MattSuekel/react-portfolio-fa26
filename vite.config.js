@@ -15,6 +15,9 @@ export default defineConfig({
     trailingComma: 'all',
     sortImports: true,
     sortPackageJson: true,
+    sortTailwindcss: {
+      stylesheet: './src/index.css',
+    },
     ignorePatterns: ['dist/**'],
   },
   lint: {

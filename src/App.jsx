@@ -5,10 +5,14 @@ import ContactPage from './pages/ContactPage';
 import ErrorPage from './pages/ErrorPage';
 import HomePage, { loader as homeProjectsLoader } from './pages/HomePage';
 import { action as logoutAction } from './pages/logout';
+import ManageProjects, {
+  action as manageProjectsAction,
+  loader as manageProjectsLoader,
+} from './pages/ManageProjects';
 import ProjectDetailPage from './pages/ProjectDetailPage';
 import ProjectsPage from './pages/ProjectsPage';
 import RootLayout from './pages/RootLayout';
-import { tokenLoader } from './utils/auth-utils';
+import { tokenLoader, checkAuthLoader } from './utils/auth-utils';
 
 const router = createBrowserRouter([
   {
@@ -41,6 +45,16 @@ const router = createBrowserRouter([
       {
         path: 'contact',
         element: <ContactPage />,
+      },
+      {
+        path: 'manage-projects',
+        element: <ManageProjects />,
+        loader: async () => {
+          const redirectResult = checkAuthLoader();
+          if (redirectResult) return redirectResult;
+          return manageProjectsLoader();
+        },
+        action: manageProjectsAction,
       },
       {
         path: 'auth',
