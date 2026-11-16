@@ -5,7 +5,7 @@ function Footer() {
   const token = useRouteLoaderData('root');
 
   return (
-    <footer className="mt-20 flex flex-wrap items-center justify-between gap-4 border-t border-border py-4">
+    <footer className="mt-12 flex flex-wrap items-center justify-between gap-4 border-t border-border py-4">
       <p className="font-sans text-sm text-muted">&copy; {year} Matthew Suekel</p>
 
       <div className="flex flex-row gap-4">

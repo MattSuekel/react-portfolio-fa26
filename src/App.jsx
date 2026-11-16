@@ -9,8 +9,10 @@ import ManageProjects, {
   action as manageProjectsAction,
   loader as manageProjectsLoader,
 } from './pages/ManageProjects';
-import ProjectDetailPage from './pages/ProjectDetailPage';
-import ProjectsPage from './pages/ProjectsPage';
+import ProjectDetailPage, {
+  loader as projectDetailLoader,
+} from './pages/ProjectDetailPage';
+import ProjectsPage, { loader as projectsLoader } from './pages/ProjectsPage';
 import RootLayout from './pages/RootLayout';
 import { tokenLoader, checkAuthLoader } from './utils/auth-utils';
 
@@ -28,6 +30,7 @@ const router = createBrowserRouter([
         children: [
           {
             index: true,
+            loader: projectsLoader,
             element: <ProjectsPage />,
           },
           {
@@ -36,6 +39,7 @@ const router = createBrowserRouter([
             children: [
               {
                 index: true,
+                loader: projectDetailLoader,
                 element: <ProjectDetailPage />,
               },
             ],

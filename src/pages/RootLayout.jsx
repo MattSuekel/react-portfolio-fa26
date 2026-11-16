@@ -25,7 +25,7 @@ function RootLayout() {
   }, [token, submit]);
 
   return (
-    <div className="mx-auto flex min-h-screen flex-col max-w-7xl px-6 py-8">
+    <div className="mx-auto flex min-h-screen max-w-7xl flex-1 flex-col px-6 py-8">
       <Header />
       <main className="flex-1">
         <Outlet />

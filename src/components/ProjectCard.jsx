@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 function ProjectCard(props) {
   return (
     <article className="mb-8 break-inside-avoid">
-      <Link to={`projects/${props.project.id}`} className="group block">
+      <Link to={`/projects/${props.project.id}`} className="group block">
         <img
           src={props.project.image}
           alt=""
