@@ -1,9 +1,9 @@
 import {
   Form,
-  Link,
+  // Link,
   redirect,
   useActionData,
-  useSearchParams,
+  // useSearchParams,
   useNavigation,
 } from 'react-router-dom';
 
@@ -12,16 +12,17 @@ const API_KEY = 'AIzaSyCAjxMCXox8va7f332n9TdIVC6U_BQ92lo';
 export default function AuthPage() {
   const data = useActionData();
   const navigation = useNavigation();
-  const [searchParams] = useSearchParams();
-
-  const isLogin = searchParams.get('mode') !== 'signup';
+  // const [searchParams] = useSearchParams();
+  //
+  // const isLogin = searchParams.get('mode') !== 'signup';
   const isSubmitting = navigation.state === 'submitting';
 
   return (
     <div className="mx-auto max-w-sm py-30">
       <section className="space-y-6">
         <h1 className="text-2xl font-semibold text-foreground">
-          {isLogin ? 'Log in' : 'Create account'}
+          {/* {isLogin ? 'Log in' : 'Create account'} */}
+          Log In
         </h1>
 
         {data?.error && (
@@ -44,8 +45,7 @@ export default function AuthPage() {
               type="email"
               required
               autoComplete="email"
-              className="h-10 w-full border-b border-border bg-transparent px-0 text-sm 
-              text-foreground placeholder:text-muted transition-colors focus:border-foreground focus:outline-none"
+              className="h-10 w-full border-b border-border bg-transparent px-0 text-sm text-foreground transition-colors placeholder:text-muted focus:border-foreground focus:outline-none"
             />
           </div>
 
@@ -59,22 +59,21 @@ export default function AuthPage() {
               type="password"
               required
               minLength={6}
-              className="h-10 w-full border-b border-border bg-transparent px-0 text-sm 
-              text-foreground placeholder:text-muted transition-colors focus:border-foreground focus:outline-none"
+              className="h-10 w-full border-b border-border bg-transparent px-0 text-sm text-foreground transition-colors placeholder:text-muted focus:border-foreground focus:outline-none"
             />
           </div>
 
           <button
             type="submit"
             disabled={isSubmitting}
-            className="mt-2 w-full border border-border bg-surface px-4 py-2 text-sm font-medium 
-            text-foreground transition-colors hover:border-foreground/50 hover:bg-white/5 disabled:opacity-50"
+            className="mt-2 w-full border border-border bg-surface px-4 py-2 text-sm font-medium text-foreground transition-colors hover:border-foreground/50 hover:bg-white/5 disabled:opacity-50"
           >
-            {isSubmitting ? 'Submitting...' : isLogin ? 'Log in' : 'Sign up'}
+            {/* {isSubmitting ? 'Submitting...' : isLogin ? 'Log in' : 'Sign up'} */}
+            {isSubmitting ? 'Submitting...' : 'Log In'}
           </button>
         </Form>
 
-        <div className="pt-2 font-sans text-sm text-muted">
+        {/* }<div className="pt-2 font-sans text-sm text-muted">
           {isLogin ? (
             <Link
               to="?mode=signup"
@@ -90,16 +89,17 @@ export default function AuthPage() {
               Log in
             </Link>
           )}
-        </div>
+        </div> */}
       </section>
     </div>
   );
 }
 
 export async function action({ request }) {
-  const searchParams = new URL(request.url).searchParams;
-  const mode =
-    searchParams.get('mode') === 'signup' ? 'signUp' : 'signInWithPassword';
+  // const searchParams = new URL(request.url).searchParams;
+  // const mode =
+  //   searchParams.get('mode') === 'signup' ? 'signUp' : 'signInWithPassword';
+  const mode = 'signInWithPassword';
 
   const data = await request.formData();
   const authData = {

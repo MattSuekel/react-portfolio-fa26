@@ -232,7 +232,7 @@ export async function action({ request }) {
       return { message: 'failed to delete project.' };
     }
 
-    return { message: 'project deleted.' };
+    return { ok: true, message: 'project deleted.' };
   }
 
   const projectData = {
@@ -260,5 +260,5 @@ export async function action({ request }) {
     return { message: 'failed to add project.' };
   }
 
-  return { message: 'project added' };
+  return { ok: true, message: 'project added' };
 }
