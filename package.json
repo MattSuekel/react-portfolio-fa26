@@ -31,12 +31,11 @@
   "devEngines": {
     "packageManager": {
       "name": "npm",
-      "version": "11.20.0",
-      "onFail": "download"
+      "version": ">=10.9.9",
+      "onFail": "warn"
     }
   },
   "engines": {
     "node": "22.x"
-  },
-  "packageManager": "npm@11.20.0"
+  }
 }
