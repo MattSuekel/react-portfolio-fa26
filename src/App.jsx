@@ -1,7 +1,7 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
 import AuthPage, { action as authAction } from './pages/AuthPage';
-import ContactPage from './pages/ContactPage';
+import ContactPage, { action as contactAction } from './pages/ContactPage';
 import ErrorPage from './pages/ErrorPage';
 import HomePage, { loader as homeProjectsLoader } from './pages/HomePage';
 import { action as logoutAction } from './pages/logout';
@@ -49,6 +49,7 @@ const router = createBrowserRouter([
       {
         path: 'contact',
         element: <ContactPage />,
+        action: contactAction,
       },
       {
         path: 'manage-projects',

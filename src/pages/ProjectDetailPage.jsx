@@ -2,6 +2,7 @@ import { Link, useLoaderData } from 'react-router-dom';
 
 export default function ProjectDetailPage() {
   const { project, nextProject } = useLoaderData();
+  const gallery = project.gallery || [];
 
   return (
     <article className="flex flex-1 flex-col space-y-8">
@@ -48,6 +49,29 @@ export default function ProjectDetailPage() {
           <p className="leading-relaxed whitespace-pre-line text-muted">
             {project.details}
           </p>
+        </section>
+      )}
+
+      {gallery.length > 0 && (
+        <section className="space-y-5">
+          <div className="flex items-center justify-between gap-4">
+            <h2 className="text-xl font-semibold text-foreground">Gallery</h2>
+            <p className="font-sans text-xs text-muted">
+              {gallery.length} {gallery.length === 1 ? 'image' : 'images'}
+            </p>
+          </div>
+
+          <div className="columns-1 gap-5 sm:columns-2 md:columns-3">
+            {gallery.map((image, index) => (
+              <img
+                key={`${image}-${index}`}
+                src={image}
+                alt={`${project.title} — image ${index + 1}`}
+                loading="lazy"
+                className="mb-5 w-full break-inside-avoid rounded-lg"
+              />
+            ))}
+          </div>
         </section>
       )}
 
